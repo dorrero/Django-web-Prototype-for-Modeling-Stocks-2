@@ -1,1 +1,3 @@
-# Django-web-Prototype-for-Modeling-Stocks-2
+# Djando-web-Stock-Modeling
+
+Django-web prototype for modeling stocks

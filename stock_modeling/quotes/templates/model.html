@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if ticker %}
+	    {{ ticker }}
+    {% endif %}
+
+    {% if api %}
+        {% if api == "Error..." %}
+            There was a problem with your ticker symbol.
+            Please try again.
+        {% else %}
+            <br/> <br/> <br/>
+            <div class="card col-sm-12  bg-info text-white" style="text-align:center;">
+                <br/>
+                <h1>{{ api.companyName }}</h1><br/>
+                <h4>Stock quote</h4>
+                Price: {{ api.latestPrice }}<br/>
+                Previous Close: {{ api.previousClose }}<br/>
+                Market Cap: {{ api.marketCap }}<br/>
+                YTD change: {{ api.ytdChange }}<br/>
+                52Wk High: {{ api.week52High }}<br/>
+                52Wk Low: {{ api.week52Low }}<br/>
+                <br/>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <br/> <br/> <br/>
+            <div class="card col-sm-12  bg-info text-white" style="text-align:center;">
+                <br/>
+                <h6>VaR at 99% confidence interval is: {{Var.0}}</h6><br/>
+		        <h6>VaR at 95% confidence interval is: {{Var.1}}</h6><br/>
+		        <h6>Expected shortfall at 99% confidence interval is: {{Var.2}}</h6><br/>
+                <h6>Expected shortfall at 95% confidence interval is: {{Var.3}}</h6><br/>
+                <br/>
+            </div>
+    {% load static %}
+
+        <br/> <br/> <br/>
+
+        <div class="row">
+            <div class="card col-sm-6">
+                <img class="card-img-top" src="{% static 'plots/historical_plot.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title" style="text-align:center;">Historical Data plot</h5>
+                </div>
+            </div>
+            <div class="card col-sm-6">
+                <img class="card-img-top" src="{% static 'plots/returns_plot.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align:center;">Return Data plot</h5>
+                </div>
+            </div>
+        </div>
+
+        <br/> <br/> <br/>
+
+        <div class="row">
+            <div class="card col-sm-12">
+                <img class="card-img-top" src="{% static 'plots/forecast_vs_actual.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title" style="text-align:center;">ARMA Model Forecast vs Actual Price over given Time Range </h5>
+                </div>
+            </div>
+        </div>
+
+
+    <br/><br/>
+    <div class="card" style="text-align:center;">
+        <div class="card-body bg-dark">
+            {% if file_content %}
+	            <pre class="text-white">
+		            {{ file_content }}
+	            </pre>
+            {% endif %}
+        </div>
+    </div>
+
+    <br/><br/>
+    <div class="card" style="text-align:center;">
+        <div class="card-body bg-dark">
+            {% if file_content1 %}
+	            <pre class="text-white">
+		            {{ file_content1 }}
+	            </pre>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
