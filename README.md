@@ -2,4 +2,4 @@
 
 Django-web prototype for modeling stocks
 
-This prototype project explores linear time series analysis model Autoregressive Moving Average (ARMA) and nonlinear time series model GARCH for modeling stocks through a website using django framework.
+This prototype project explores linear time series analysis model Autoregressive Moving Average (ARMA) and nonlinear time series model Generalized Auto regressive Conditional Heteroskedasticity(GARCH) for modeling stocks through a website using django framework.
